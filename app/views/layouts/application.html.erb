@@ -8,6 +8,9 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+	<% if flash[:error] %>
+		<%= render partial: "flash_error"%>
+	<% end %>
 	<%= render "layouts/navbar" %>
 	<%= render "layouts/modal_getstarted" %>
 <%= render "layouts/modal_login" %>

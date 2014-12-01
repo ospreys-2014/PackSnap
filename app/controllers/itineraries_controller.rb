@@ -21,7 +21,7 @@ class ItinerariesController < ApplicationController
       flash[:itinerary_id] = @itinerary.id
       redirect_to new_location_path
     else
-      set_alert(@itinerary)
+      set_error(@itinerary)
       render :new, locals:{itinerary: @itinerary}
     end
   end
@@ -37,7 +37,7 @@ class ItinerariesController < ApplicationController
     if @itinerary.save
       redirect_to trip_itineraries_path(@itinerary.trip)
     else
-      set_alert(@itinerary)
+      set_error(@itinerary)
       render :edit, locals:{itinerary: @itinerary}
     end
   end

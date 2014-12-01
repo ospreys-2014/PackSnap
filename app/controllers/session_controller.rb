@@ -5,8 +5,13 @@ class SessionController < ApplicationController
 
   def login
     @user = User.find_by(email: user_params[:email]).try(:authenticate, user_params[:password])
-    session[:user_id] = @user.id
-    redirect_to root_path
+    if @user
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      set_error(@user)
+      redirect_to root_path
+    end
   end
 
   def logout

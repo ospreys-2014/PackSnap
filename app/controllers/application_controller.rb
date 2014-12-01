@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_alert(object_with_error)
-    flash.now.alert = object_with_error.errors.full_messages
+  def set_error(object_with_error)
+  	if object_with_error == nil
+  		flash[:error] = "LOGIN INCORRECT, PLEASE TRY AGAIN"
+    else
+    	flash[:error] = object_with_error.errors.full_messages
+  	end
   end
 end
