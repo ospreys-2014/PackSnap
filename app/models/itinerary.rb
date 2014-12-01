@@ -9,6 +9,6 @@ class Itinerary < ActiveRecord::Base
 
  
  	def start_date_before_or_equal_to_end_date
- 		errors.add(:end_date, "End Date must be same or more than start_date") if end_date<start_date
+ 		errors.add(:end_date, " must be same or more than start_date") if end_date<start_date
  	end
 end
